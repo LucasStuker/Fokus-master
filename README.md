@@ -1,1 +1,7 @@
-Estou um pouco destreinado em JavaScript, então esse pequeno projeto é apenas uma revisão do que já aprendi
+Segue o link abaixo do Vercel.
+
+https://fokus-master.vercel.app/
+
+Essa seria a versão 1.0.
+
+Nas seguintes versões irei colocar o cronometro diferente referente a cada tela
