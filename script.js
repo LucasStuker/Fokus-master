@@ -7,7 +7,9 @@ const titulo = document.querySelector('.app__title')
 const botoes = document.querySelectorAll('.app__card-button')
 const startPauseBtn = document.querySelector('#start-pause')
 const iniciarPausarBt= document.querySelector('#start-pause span')
-const tempoTela = document.querySelector('#time')
+const iniciarOuPausarBtIco = document.querySelector(".app__card-primary-butto-icon") 
+const tempoTela = document.querySelector('#timer')
+
 const musicaFonteInput = document.querySelector('#alternar-musica')
 const musica = new Audio('./sons/luna-rise-part-one.mp3')
 const audioPlay = new Audio('./sons/play.wav')
@@ -42,7 +44,7 @@ longoBt.addEventListener('click', () =>{
 })
 
 function alterarContexto(contexto) {
-    mostrarTempo ()
+ //   mostrarTempo ()
     botoes.forEach(function (contexto) {
         contexto.classList.remove('active')
     })
@@ -68,6 +70,7 @@ function alterarContexto(contexto) {
 
 const contagemRegressiva = () => {
     if(tempoEmSegundos <= 0) {
+        audioEnd.play()
         zerar()
         return
     }
@@ -86,16 +89,19 @@ function iniciar() {
     audioPlay.play()
     intervaloId = setInterval(contagemRegressiva, 1000)
     iniciarPausarBt.textContent = "Pausar"
+    iniciarOuPausarBtIco.setAttribute=('src', `./imagens/pause.png`)
 }   
 
 function zerar () {
     clearInterval(intervaloId)
     iniciarPausarBt.textContent = "Começar"
+    iniciarOuPausarBtIco.setAttribute=('src', `./imagens/play_arrow.png`)
+
     intervaloId = null
 }
 function mostrarTempo () {
-    const tempo = new Date(tempoEmSegundos * 1000)
-    const tempoFormatado = tempo.toLocaleTimeString('pt-Br', {minute: '2-digit', second: '2-digit'})
-    tempoTela.innerHTML = `${tempoFormatado}`
+   const tempo = new Date(tempoEmSegundos * 1000)
+   const tempoFormatado = tempo.toLocaleTimeString('pt-Br', {minute: '2-digit', second: '2-digit'})
+   tempoTela.innerHTML = `${tempoFormatado}`
 }
 mostrarTempo ()
